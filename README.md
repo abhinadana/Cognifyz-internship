@@ -13,7 +13,7 @@ Throughout this internship, I strengthened my skills in building responsive and 
 - **Organization:** Cognifyz Technologies
 - **Domain:** Web Development
 - **Internship Type:** Virtual Internship
-- **Duration:** 2 Months
+- **Duration:** 1 Month
 
 ---
 
