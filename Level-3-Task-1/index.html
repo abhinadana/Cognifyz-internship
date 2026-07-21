@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aperture &mdash; Image Manipulation | Cognifyz Level 3, Task 1</title>
+<meta name="description" content="A responsive photography portfolio featuring an interactive image gallery with lightbox and an automatic image slideshow." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== HEADER / NAVIGATION ===================== -->
+<header class="site-header" id="top">
+  <nav class="navbar">
+    <a href="#top" class="logo">Aperture<span class="logo-dot">.</span></a>
+
+    <!-- Mobile menu toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#slideshow">Slideshow</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===================== HERO SECTION ===================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Cognifyz Web Development Internship &middot; Level 3, Task 1</p>
+    <h1>Image Manipulation, <em>framed properly.</em></h1>
+    <p class="hero-sub">A responsive gallery with a click-to-enlarge lightbox, paired with a self-playing slideshow &mdash; built entirely with HTML, CSS and vanilla JavaScript.</p>
+    <div class="hero-actions">
+      <a href="#gallery" class="btn btn-primary">View Gallery</a>
+      <a href="#slideshow" class="btn btn-ghost">See Slideshow</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY SECTION ===================== -->
+<section class="gallery-section" id="gallery">
+  <div class="section-head">
+    <span class="section-number">01</span>
+    <div>
+      <h2>The Gallery</h2>
+      <p>Click any thumbnail to open it full size.</p>
+    </div>
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- Each figure is one gallery item; data-caption feeds the lightbox -->
+    <figure class="gallery-item" data-caption="Ridgeline at first light, Dolomites">
+      <img src="https://picsum.photos/seed/ridge/800/800" alt="Mountain ridgeline at sunrise" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Fishing harbor, blue hour">
+      <img src="https://picsum.photos/seed/harbor/800/800" alt="Harbor at dusk with boats" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Dune field, Namib Desert">
+      <img src="https://picsum.photos/seed/desert/800/800" alt="Rolling desert dunes" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Old growth pine, Pacific Northwest">
+      <img src="https://picsum.photos/seed/forest/800/800" alt="Sunlight through pine forest" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Basalt coastline, low tide">
+      <img src="https://picsum.photos/seed/coastline/800/800" alt="Rocky coastline with waves" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Glacial lake, early autumn">
+      <img src="https://picsum.photos/seed/lake/800/800" alt="Still alpine lake reflecting mountains" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Terraced valley after rainfall">
+      <img src="https://picsum.photos/seed/valley/800/800" alt="Green terraced valley" loading="lazy">
+    </figure>
+    <figure class="gallery-item" data-caption="Slot canyon, midday light shaft">
+      <img src="https://picsum.photos/seed/canyon/800/800" alt="Sunlight beam inside a canyon" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== LIGHTBOX MODAL (hidden by default) ===================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox-overlay" id="lightboxOverlay"></div>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged image">&times;</button>
+  <figure class="lightbox-content">
+    <img src="" alt="" id="lightboxImg">
+    <figcaption id="lightboxCaption"></figcaption>
+  </figure>
+</div>
+
+<!-- ===================== SLIDESHOW SECTION ===================== -->
+<section class="slideshow-section" id="slideshow">
+  <div class="section-head">
+    <span class="section-number">02</span>
+    <div>
+      <h2>The Slideshow</h2>
+      <p>Plays automatically. Hover to pause, use the arrows or dots to navigate.</p>
+    </div>
+  </div>
+
+  <div class="slideshow" id="slideshowEl">
+    <div class="slide active" data-caption="Ridgeline at first light, Dolomites">
+      <img src="https://picsum.photos/seed/ridge/1400/800" alt="Mountain ridgeline at sunrise">
+    </div>
+    <div class="slide" data-caption="Dune field, Namib Desert">
+      <img src="https://picsum.photos/seed/desert/1400/800" alt="Rolling desert dunes">
+    </div>
+    <div class="slide" data-caption="Basalt coastline, low tide">
+      <img src="https://picsum.photos/seed/coastline/1400/800" alt="Rocky coastline with waves">
+    </div>
+    <div class="slide" data-caption="Terraced valley after rainfall">
+      <img src="https://picsum.photos/seed/valley/1400/800" alt="Green terraced valley">
+    </div>
+    <div class="slide" data-caption="Slot canyon, midday light shaft">
+      <img src="https://picsum.photos/seed/canyon/1400/800" alt="Sunlight beam inside a canyon">
+    </div>
+
+    <button class="slide-arrow slide-prev" id="slidePrev" aria-label="Previous slide">&#10094;</button>
+    <button class="slide-arrow slide-next" id="slideNext" aria-label="Next slide">&#10095;</button>
+
+    <div class="slide-caption" id="slideCaption"></div>
+
+    <div class="slide-dots" id="slideDots"></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer" id="footer">
+  <div class="footer-inner">
+    <div>
+      <a href="#top" class="logo">Aperture<span class="logo-dot">.</span></a>
+      <p class="footer-tagline">Built for Cognifyz IT Solutions &mdash; Web Development Internship, Level 3, Task 1.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#gallery">Gallery</a>
+      <a href="#slideshow">Slideshow</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Aperture Demo Project. Images via Picsum Photos, used as placeholders.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
