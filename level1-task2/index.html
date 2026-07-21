@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 1 — Task 2 | Interactive Utility Panel</title>
+
+  <!-- Google Fonts: Space Grotesk (display/UI) + JetBrains Mono (readouts/data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient background layer -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <main class="page">
+
+    <!-- ============ PAGE HEADER ============ -->
+    <header class="page-header">
+      <p class="eyebrow">Level 1 &nbsp;/&nbsp; Task 2</p>
+      <h1 class="page-title">Interactive Utility Panel</h1>
+      <p class="page-subtitle">Three small tools, one console: a color generator, a time-aware greeter, and a quick-sum calculator.</p>
+    </header>
+
+    <!-- ============ PANEL GRID ============ -->
+    <div class="panel-grid">
+
+      <!-- ============ TASK 1: COLOR CHANGING BUTTON ============ -->
+      <section class="card" id="color-card" aria-labelledby="color-heading">
+        <div class="card-head">
+          <span class="card-index">01</span>
+          <h2 class="card-title" id="color-heading">Color Generator</h2>
+        </div>
+        <p class="card-desc">Click to roll a brand-new random color. The swatch, button, and readout update together.</p>
+
+        <div class="swatch" id="colorSwatch" aria-hidden="true"></div>
+
+        <button class="btn btn-primary" id="colorBtn" type="button">
+          <span>Change Color</span>
+        </button>
+
+        <div class="readout" id="colorReadout">
+          <span class="readout-label">Current Color</span>
+          <span class="readout-value" id="colorValue">#3FA9F5</span>
+        </div>
+      </section>
+
+      <!-- ============ TASK 2: GREETING ALERT ============ -->
+      <section class="card" id="greeting-card" aria-labelledby="greeting-heading">
+        <div class="card-head">
+          <span class="card-index">02</span>
+          <h2 class="card-title" id="greeting-heading">Time-Aware Greeting</h2>
+        </div>
+        <p class="card-desc">Reads your system clock and greets you appropriately &mdash; morning, afternoon, evening, or night.</p>
+
+        <div class="clock-display" id="clockDisplay" aria-hidden="true">--:--:--</div>
+
+        <button class="btn btn-primary" id="greetingBtn" type="button">
+          <span>Show Greeting</span>
+        </button>
+
+        <div class="readout" id="greetingReadout">
+          <span class="readout-label">Message</span>
+          <span class="readout-value" id="greetingValue">Waiting for click&hellip;</span>
+        </div>
+      </section>
+
+      <!-- ============ TASK 3: BASIC CALCULATOR ============ -->
+      <section class="card" id="calc-card" aria-labelledby="calc-heading">
+        <div class="card-head">
+          <span class="card-index">03</span>
+          <h2 class="card-title" id="calc-heading">Quick Sum Calculator</h2>
+        </div>
+        <p class="card-desc">Enter two numbers (decimals welcome) to add them together.</p>
+
+        <form class="calc-form" id="calcForm" novalidate>
+          <div class="field">
+            <label for="firstNumber">First Number</label>
+            <input
+              type="number"
+              id="firstNumber"
+              name="firstNumber"
+              placeholder="e.g. 25"
+              step="any"
+              inputmode="decimal"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="field">
+            <label for="secondNumber">Second Number</label>
+            <input
+              type="number"
+              id="secondNumber"
+              name="secondNumber"
+              placeholder="e.g. 15"
+              step="any"
+              inputmode="decimal"
+              autocomplete="off"
+            />
+          </div>
+
+          <button class="btn btn-primary" type="submit" id="calcBtn">
+            <span>Calculate Sum</span>
+          </button>
+        </form>
+
+        <div class="readout" id="calcReadout">
+          <span class="readout-label">Result</span>
+          <span class="readout-value" id="calcValue">Awaiting input&hellip;</span>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="page-footer">
+      <p>Built with HTML5, CSS3 &amp; Vanilla JavaScript &mdash; no frameworks, no dependencies.</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

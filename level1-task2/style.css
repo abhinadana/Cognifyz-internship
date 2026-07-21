@@ -1,0 +1,412 @@
+/* =====================================================
+   TASK 2 — INTERACTIVE UTILITY PANEL
+   Design tokens: deep indigo/navy console theme
+   Display + UI face : "Space Grotesk"
+   Data / readout face: "JetBrains Mono"
+   Accents: cyan (#5EEAD4) for action, amber (#FBBF24) for data emphasis
+===================================================== */
+
+:root {
+  /* Palette */
+  --bg-deep: #0B0F1A;
+  --bg-mid: #121A2E;
+  --bg-panel: #161F35;
+  --bg-panel-hover: #1B2540;
+  --border-soft: rgba(148, 163, 200, 0.16);
+  --border-strong: rgba(148, 163, 200, 0.3);
+
+  --text-primary: #EAF0FF;
+  --text-secondary: #93A0C2;
+  --text-muted: #5C6788;
+
+  --accent-cyan: #5EEAD4;
+  --accent-cyan-dim: rgba(94, 234, 212, 0.14);
+  --accent-amber: #FBBF24;
+  --accent-coral: #FB7185;
+
+  /* Type */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* Layout */
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  --transition-smooth: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =====================================================
+   RESET & BASE
+===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient gradient glow behind everything */
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -10%, rgba(94, 234, 212, 0.14), transparent 60%),
+    radial-gradient(ellipse 800px 700px at 90% 10%, rgba(251, 191, 36, 0.10), transparent 55%),
+    radial-gradient(ellipse 1000px 800px at 50% 110%, rgba(99, 102, 241, 0.16), transparent 60%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 55%, var(--bg-deep) 100%);
+}
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 48px;
+  animation: fadeSlideIn 600ms ease both;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 14px;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, #EAF0FF 0%, #93A0C2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.page-footer {
+  text-align: center;
+  margin-top: 56px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+  background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-mid) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px 26px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--transition-smooth), transform var(--transition-smooth);
+  animation: fadeSlideIn 600ms ease both;
+}
+
+.card:nth-child(1) { animation-delay: 60ms; }
+.card:nth-child(2) { animation-delay: 140ms; }
+.card:nth-child(3) { animation-delay: 220ms; }
+
+.card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.card-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  cursor: pointer;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), background var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent-cyan);
+  color: #06231E;
+  box-shadow: 0 8px 24px -8px rgba(94, 234, 212, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px rgba(94, 234, 212, 0.65);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 14px -6px rgba(94, 234, 212, 0.5);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 3px;
+}
+
+/* Ripple-style click pulse */
+.btn.is-pulsing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.35);
+  animation: pulseOut 480ms ease-out;
+  pointer-events: none;
+}
+
+@keyframes pulseOut {
+  0% { opacity: 0.6; transform: scale(0.4); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* =====================================================
+   TASK 1 — COLOR SWATCH & READOUT
+===================================================== */
+
+.swatch {
+  height: 84px;
+  border-radius: var(--radius-md);
+  background: #3FA9F5;
+  border: 1px solid var(--border-soft);
+  transition: background var(--transition-smooth);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.readout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-top: auto;
+}
+
+.readout-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.readout-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-amber);
+  text-align: right;
+  word-break: break-word;
+}
+
+/* =====================================================
+   TASK 2 — CLOCK & GREETING
+===================================================== */
+
+.clock-display {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 18px 0;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-soft);
+  color: var(--accent-cyan);
+}
+
+/* =====================================================
+   TASK 3 — CALCULATOR
+===================================================== */
+
+.calc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.field input {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.field input::placeholder {
+  color: var(--text-muted);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px var(--accent-cyan-dim);
+}
+
+.field input.input-error {
+  border-color: var(--accent-coral);
+  box-shadow: 0 0 0 3px rgba(251, 113, 133, 0.14);
+}
+
+.readout.is-error .readout-value {
+  color: var(--accent-coral);
+}
+
+.readout.is-success .readout-value {
+  color: var(--accent-cyan);
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes valuePop {
+  0% { transform: scale(0.92); opacity: 0.4; }
+  60% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.readout-value.is-updating {
+  animation: valuePop 320ms ease-out;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 640px) {
+  .page {
+    padding: 40px 16px 32px;
+  }
+
+  .card {
+    padding: 22px 20px 20px;
+  }
+
+  .clock-display {
+    font-size: 1.3rem;
+  }
+
+  .readout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .readout-value {
+    text-align: left;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
