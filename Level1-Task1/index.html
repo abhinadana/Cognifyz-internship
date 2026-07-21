@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognifyz | Web Development Internship - Level 1 Task 1</title>
+  <meta name="description" content="A simple, professional webpage built for the Cognifyz Technologies Web Development Internship, Level 1 Task 1." />
+
+  <!-- Google Fonts: Poppins for headings, Roboto for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================= -->
+  <!-- HEADER: Logo + Navigation Bar -->
+  <!-- ============================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Website logo / title -->
+      <a href="#home" class="logo">Cogni<span>fyz</span></a>
+
+      <!-- Navigation menu with Home, About, Contact -->
+      <nav class="main-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================= -->
+    <!-- HERO SECTION: Heading, paragraph, image -->
+    <!-- ============================= -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+
+        <article class="hero-text">
+          <!-- Professional heading -->
+          <h1>Building Clean, Modern Web Experiences</h1>
+          <!-- Descriptive paragraph -->
+          <p>
+            I'm a front-end developer completing the Cognifyz Technologies
+            Web Development Internship. This project showcases a simple,
+            responsive webpage built using only HTML5 and CSS3 — combining
+            clean structure with modern, professional styling.
+          </p>
+          <a href="#contact" class="btn-primary">Get In Touch</a>
+        </article>
+
+        <!-- High-quality image related to web development -->
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=900&q=80"
+            alt="Laptop screen displaying colorful lines of code in an editor"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- ABOUT SECTION -->
+    <!-- ============================= -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About This Project</h2>
+        <p>
+          This webpage was created for Level 1 Task 1 of the Cognifyz
+          Technologies Web Development Internship. It demonstrates core
+          front-end skills: semantic HTML structure, responsive CSS layout
+          using Flexbox, accessible form design, and a modern visual style
+          built entirely without frameworks like Bootstrap or any JavaScript.
+        </p>
+
+        <!-- A few feature cards to round out the About section -->
+        <div class="about-cards">
+          <article class="card">
+            <h3>Semantic HTML</h3>
+            <p>Structured with header, nav, main, section, article and footer for clarity and accessibility.</p>
+          </article>
+          <article class="card">
+            <h3>Modern CSS</h3>
+            <p>Styled with CSS variables, Flexbox, gradients, shadows and smooth hover transitions.</p>
+          </article>
+          <article class="card">
+            <h3>Fully Responsive</h3>
+            <p>Adapts cleanly to desktop, laptop, tablet and mobile screens using media queries.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CONTACT / FORM SECTION -->
+    <!-- ============================= -->
+    <section id="contact" class="contact">
+      <div class="container contact-inner">
+        <h2>Get In Touch</h2>
+        <p>Have a question or want to connect? Send me your name below.</p>
+
+        <!-- Basic form with label, input, placeholder, and HTML5 validation -->
+        <form class="contact-form" action="#" method="post">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            minlength="2"
+            maxlength="50"
+            required
+          />
+
+          <button type="submit" class="btn-primary">Submit</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= -->
+  <!-- FOOTER -->
+  <!-- ============================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Cognifyz Internship Project</p>
+      <p>Designed by Your Name</p>
+    </div>
+  </footer>
+
+</body>
+</html>
